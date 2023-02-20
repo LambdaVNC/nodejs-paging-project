@@ -1,0 +1,45 @@
+<% 
+
+// Eğer index undefined ise tek bir makale gösterilecektir
+// Eğer index bir number olarak geliyorsa geldiği sayı kadar makale gösterilir.
+let yukseklik = '';
+if (index == undefined) {
+  yukseklik = 900;
+} else {
+  yukseklik = 900 + index ;
+}
+
+ const mod = index % 10 ;
+ if (mod === 0) {
+  yukseklik = 600; 
+ } else {
+  yukseklik = 600 + index ;
+ }
+
+%>
+
+  <div class="card">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <img src="https://source.unsplash.com/random/1200x<%=yukseklik%>" alt="Placeholder image">
+      </figure>
+    </div>
+    <div class="card-content">
+
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4">
+            <%= article.title.rendered %>
+          </p>
+        </div>
+      </div>
+
+
+
+      <div class="content">
+        <%- index === undefined ? article.content.rendered : article.excerpt.rendered.slice(0,50) %>
+          <br>
+          <a href="blog/<%=article.id%>">Devamını Oku...</a>
+      </div>
+    </div>
+  </div>

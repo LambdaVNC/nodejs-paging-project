@@ -1,0 +1,20 @@
+<%- include('../partial/_header.ejs') %>
+    <div class="columns is-multiline">
+        <% articles.forEach((article, index)=> { %>
+            <div class="column is-4">
+                <%- include("../partial/_article_card.ejs", { article, index }) %>
+            </div>
+            <% }) %>
+    </div>
+    <%
+     const totalPage = paging['x-wp-totalpages'];
+     const totalData = paging['x-wp-total'];
+     const currentPage = activePage;
+      %>
+        <div class="block"></div>
+
+        <div class="column is-12">
+            <%- include("../partial/_pagination.ejs", {totalPage , totalData, currentPage}) %>
+        </div>
+
+        <div class="block"></div>

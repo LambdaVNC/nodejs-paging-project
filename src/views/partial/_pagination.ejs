@@ -1,0 +1,18 @@
+<% const page=currentPage ; const prev=page - 1 ; const next=parseInt(page) + 1 ; const maxPage=totalPage; %>
+
+
+    <nav class="pagination is-medium" role="navigation" aria-label="pagination">
+        <a <%= page !==1 ? "href=/blog?page=" + prev : "" %> class="pagination-previous" <%= currentPage==1
+                ? " is-disabled" : "" %> >Previous</a>
+        <a <%= page !==maxPage ? "href=/blog?page=" + next : "" %> class="pagination-next" <%= currentPage==maxPage
+                ? "is-disabled" : "" %>>Next page</a>
+        <ul class="pagination-list">
+            <% for( let index=1; index <=totalPage; index++ ) { %>
+                <li>
+                    <a href="/blog?page=<%=index%>" class="pagination-link <%= index == currentPage ? " is-current" : ""
+                        %>" aria-label="Goto page"><%- index %></a>
+                </li>
+                <% } %>
+
+        </ul>
+    </nav>
